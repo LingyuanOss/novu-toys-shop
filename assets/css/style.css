@@ -1,0 +1,966 @@
+/* ================= 全局变量 ================= */
+:root {
+  --primary: #111;
+  --primary-light: #333;
+  --accent: #e74c3c;
+  --bg: #ffffff;
+  --bg-gray: #f7f7f7;
+  --border: #ddd;
+  --text: #333;
+  --text-light: #888;
+  --placeholder-bg: #f0f0f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ================= 头部与导航 ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+}
+.logo span {
+  color: var(--accent);
+}
+.navigation a {
+  margin: 0 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.navigation a:hover {
+  color: var(--accent);
+}
+.header-icons {
+  position: relative;
+  cursor: pointer;
+}
+.header-icons a {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+/* 购物车胶囊外框（防止误触） */
+.header-icons a[href="cart.html"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  padding: 5px 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.header-icons a[href="cart.html"]:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.header-icons a[href="cart.html"] .cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= 轮播图（左右平移样式） ================= */
+.hero-carousel,
+.shop-banner-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.hero-carousel {
+  height: 450px;
+}
+.shop-banner-carousel {
+  height: 300px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  transform: translateX(100%); /* 右侧隐藏 */
+  transition: transform 0.6s ease-in-out;
+  z-index: 0;
+}
+.slide.active {
+  transform: translateX(0);
+  z-index: 1;
+}
+.slide.prev {
+  transform: translateX(-100%);
+}
+
+.hero-content h1,
+.shop-banner-carousel h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+.hero-content p,
+.shop-banner-carousel p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+.primary-btn {
+  padding: 15px 40px;
+  background: #fff;
+  color: #111;
+  border-radius: 30px;
+  font-weight: bold;
+}
+.primary-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 箭头样式 */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s;
+}
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.carousel-arrow.prev {
+  left: 20px;
+}
+.carousel-arrow.next {
+  right: 20px;
+}
+
+/* 圆点指示器 */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.carousel-dots .dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.carousel-dots .dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* ================= 首页板块 ================= */
+.section-title {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+.section-title h2 {
+  font-size: 40px;
+}
+.section-title p {
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+.home-products,
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 80px 60px;
+}
+
+/* 分类卡片 */
+.category-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.category-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.category-card h3 {
+  font-size: 22px;
+  margin: 15px 0 5px;
+}
+.category-card p {
+  color: var(--text-light);
+  margin-bottom: 15px;
+}
+.category-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 14px;
+}
+.category-btn:hover {
+  background: var(--accent);
+}
+
+/* ================= 商品卡片通用样式 ================= */
+.product-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.product-card img {
+  transition: transform 0.3s;
+}
+.product-card:hover img {
+  transform: scale(1.05);
+}
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.product-tag {
+  display: inline-block;
+  font-size: 12px;
+  background: var(--primary);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+.product-card h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+.artist {
+  color: var(--text-light);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.price {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+.product-card button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+.product-card button:hover {
+  background: var(--accent);
+}
+
+/* ================= 核心：图片占位区 ================= */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: var(--placeholder-bg);
+  overflow: hidden;
+}
+.img-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 14px;
+  letter-spacing: 1px;
+  background-color: var(--placeholder-bg);
+}
+.image-wrapper img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 快速加购 */
+.quick-add {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    background 0.3s;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 10;
+}
+.product-card:hover .quick-add {
+  opacity: 1;
+}
+.quick-add:hover {
+  background: var(--accent);
+}
+
+/* ================= Shop 强制三列布局 ================= */
+.shop-products .product-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px;
+  width: 100%;
+}
+.shop-products .product-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+.shop-products .image-wrapper {
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 1000px) {
+  .shop-products .product-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 640px) {
+  .shop-products .product-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 商城控制区 */
+.shop-banner {
+  height: 300px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/banners/shop-banner.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.shop-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px 80px;
+  background: var(--bg-gray);
+  flex-wrap: wrap;
+}
+.search-box input {
+  padding: 15px;
+  width: 350px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.filter-box {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.filter-box select {
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.shop-products {
+  padding: 40px 80px;
+}
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+/* 加载更多 */
+#loadMoreArea {
+  text-align: center;
+  padding: 40px 0;
+}
+#loadMoreBtn {
+  padding: 15px 50px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 16px;
+}
+#loadMoreBtn:hover {
+  background: var(--accent);
+}
+
+/* ================= 详情页 ================= */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 80px;
+  align-items: center;
+}
+.product-image img {
+  width: 100%;
+  border-radius: 20px;
+}
+.product-content h1 {
+  font-size: 50px;
+  margin: 20px 0;
+}
+.product-content h2 {
+  font-size: 35px;
+  color: var(--accent);
+}
+.product-meta {
+  margin: 30px 0;
+  line-height: 2;
+  color: #555;
+}
+.description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+.purchase-area {
+  display: flex;
+  gap: 20px;
+}
+.purchase-area input {
+  width: 80px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.purchase-area button {
+  padding: 15px 40px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  font-size: 16px;
+}
+.purchase-area button:hover {
+  background: var(--accent);
+}
+
+/* ================= 购物车页 ================= */
+.cart-section {
+  padding: 80px;
+}
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+}
+.cart-item {
+  display: flex;
+  gap: 30px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.cart-item img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.cart-info h3 {
+  font-size: 22px;
+}
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.quantity-control button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 18px;
+}
+.quantity-control button:hover {
+  background: var(--accent);
+}
+.remove-btn {
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.cart-summary {
+  background: var(--bg-gray);
+  padding: 30px;
+  border-radius: 15px;
+  height: fit-content;
+}
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+.summary-total {
+  font-size: 25px;
+  font-weight: 800;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+#checkoutButton {
+  width: 100%;
+  padding: 18px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+#checkoutButton:hover {
+  background: var(--accent);
+}
+.empty-cart {
+  text-align: center;
+  padding: 100px;
+}
+.empty-cart button {
+  margin-top: 20px;
+  padding: 15px 40px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+}
+
+/* 优惠券 */
+.coupon-box {
+  margin-bottom: 20px;
+}
+.coupon-box input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.coupon-box button {
+  width: 25%;
+  padding: 10px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 5px;
+}
+.coupon-box button:hover {
+  background: var(--accent);
+}
+
+/* ================= 结算页 ================= */
+.checkout-section {
+  padding: 80px;
+}
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+.customer-form,
+.checkout-summary {
+  background: var(--bg-gray);
+  padding: 40px;
+  border-radius: 15px;
+}
+.customer-form h2,
+.checkout-summary h2 {
+  margin-bottom: 20px;
+}
+.customer-form input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.checkout-summary p {
+  line-height: 2;
+}
+#paymentButton {
+  width: 100%;
+  padding: 18px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+#paymentButton:hover {
+  background: var(--accent);
+}
+
+/* 支付方式 */
+.payment-methods label {
+  border: 2px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: 0.3s;
+}
+.payment-methods label:hover {
+  border-color: #aaa;
+}
+.payment-methods input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* ================= Toast 弹窗 ================= */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.toast-error {
+  background: var(--accent);
+}
+
+/* ================= 客户评价区 ================= */
+.testimonial-card {
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.testimonial-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.testimonial-card h4 {
+  margin-bottom: 10px;
+}
+.testimonial-card p {
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+/* ================= 艺术家页 ================= */
+.artist-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding-bottom: 20px;
+}
+.artist-card .image-wrapper {
+  height: 250px;
+}
+.artist-card h3 {
+  font-size: 24px;
+  margin-top: 15px;
+}
+.artist-card p {
+  color: #666;
+  margin: 10px 0;
+}
+
+/* ================= 品牌故事与关于页 ================= */
+.about-story,
+.brand-story {
+  padding: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.story-image {
+  flex: 1;
+}
+.story-text {
+  flex: 1;
+}
+.story-text h2 {
+  font-size: 36px;
+}
+.story-text p {
+  color: #666;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+.story-text a {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 40px;
+  background: #111;
+  color: white;
+  border-radius: 30px;
+}
+.story-text a:hover {
+  background: var(--accent);
+}
+
+/* 数据统计 */
+.stats-section {
+  background: #f7f7f7;
+  padding: 60px 80px;
+}
+.stats-section > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.stat-item h2 {
+  font-size: 50px;
+  color: #e74c3c;
+}
+.stat-item p {
+  color: #666;
+  margin-top: 10px;
+}
+
+/* 品牌理念 */
+.features {
+  padding: 80px;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.feature-grid > div {
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+.feature-grid h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.feature-grid p {
+  color: #666;
+  line-height: 1.8;
+}
+
+/* CTA */
+.cta-section {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+}
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.cta-section p {
+  color: #aaa;
+  margin-bottom: 40px;
+}
+.cta-section a {
+  padding: 15px 50px;
+  background: #fff;
+  color: #111;
+  border-radius: 30px;
+  font-weight: bold;
+}
+.cta-section a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ================= 页脚（去掉了白条，直接贴在黑块后面） ================= */
+.footer {
+  text-align: center;
+  padding: 40px;
+  background: #000;
+  color: #fff;
+  margin-top: 0; /* 关键：去掉了原来的80px白条间距 */
+}
+
+/* ================= 响应式（桌面端/移动端） ================= */
+@media (max-width: 900px) {
+  .header {
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .navigation {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  .home-products,
+  .category-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+
+  .shop-controls {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .search-box input {
+    width: 100%;
+  }
+
+  .product-detail,
+  .about-story,
+  .brand-story {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .cart-section,
+  .checkout-section {
+    padding: 40px 20px;
+  }
+  .cart-layout,
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .quick-add {
+    opacity: 1;
+  }
+
+  .feature-grid,
+  .artist-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVU TOYS | Artists</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">NOVU<span>TOYS</span></div>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="artists.html" style="color: #e74c3c; font-weight: 700"
+          >Artists</a
+        >
+      </nav>
+      <div class="header-icons">
+        <a href="cart.html">购物车<span class="cart-badge">0</span></a>
+      </div>
+    </header>
+
+    <section class="hero-carousel" id="artistsCarousel">
+      <div
+        class="slide active"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersArtists1.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>Meet The Creators</h1>
+          <p>艺术家背后的故事与灵感</p>
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersArtists2.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>挖掘新锐力量</h1>
+          <p>与全球顶级艺术家合作，打造独一无二的收藏系列</p>
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersArtists3.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>灵感无限</h1>
+          <p>街头文化、科幻与幻想，尽在 NOVU</p>
+        </div>
+      </div>
+
+      <button class="carousel-arrow prev" onclick="changeSlideArtists(-1)">
+        &#10094;
+      </button>
+      <button class="carousel-arrow next" onclick="changeSlideArtists(1)">
+        &#10095;
+      </button>
+
+      <div class="carousel-dots">
+        <span class="dot active" onclick="setSlideArtists(0)"></span>
+        <span class="dot" onclick="setSlideArtists(1)"></span>
+        <span class="dot" onclick="setSlideArtists(2)"></span>
+      </div>
+    </section>
+
+    <section class="artist-section" style="padding: 80px">
+      <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px">
+        我们的艺术家
+      </h2>
+      <div
+        id="artistGrid"
+        class="artist-grid"
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+        "
+      >
+        <p style="grid-column: 1 / -1; text-align: center; color: #888">
+          正在加载艺术家数据...<br />（提示：请务必使用 Live Server 运行！）
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NOVU TOYS</div>
+      <p>© 2026 NOVU TOYS. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/cart-core.js"></script>
+    <script src="assets/js/artists.js"></script>
+  </body>
+</html>

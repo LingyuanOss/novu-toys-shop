@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVU TOYS | Creative Collectibles</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">NOVU<span>TOYS</span></div>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="artists.html">Artists</a>
+      </nav>
+      <div class="header-icons">
+        <a href="cart.html">购物车<span class="cart-badge">0</span></a>
+      </div>
+    </header>
+
+    <!-- ================= HERO CAROUSEL ================= -->
+    <section class="hero-carousel" id="homeCarousel">
+      <div
+        class="slide active"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersHome1.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>Discover The World<br />Of Creative Collectibles</h1>
+          <p>
+            Premium designer toys, limited editions and creative characters.
+          </p>
+          <a href="shop.html"><button class="primary-btn">Shop Now</button></a>
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersHome2.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>新潮盲盒系列上线</h1>
+          <p>神秘惊喜，等你来拆！</p>
+          <a href="shop.html?category=Blind%20Box"
+            ><button class="primary-btn">去抽盲盒</button></a
+          >
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersHome3.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="hero-content">
+          <h1>限量艺术家联名款</h1>
+          <p>全球限量发售，火热抢购中！</p>
+          <a href="shop.html?tag=Limited"
+            ><button class="primary-btn">抢购限量</button></a
+          >
+        </div>
+      </div>
+
+      <button class="carousel-arrow prev" onclick="changeSlideHome(-1)">
+        &#10094;
+      </button>
+      <button class="carousel-arrow next" onclick="changeSlideHome(1)">
+        &#10095;
+      </button>
+
+      <div class="carousel-dots">
+        <span class="dot active" onclick="setSlideHome(0)"></span>
+        <span class="dot" onclick="setSlideHome(1)"></span>
+        <span class="dot" onclick="setSlideHome(2)"></span>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="categories">
+      <div class="section-title">
+        <h2>Explore Categories</h2>
+        <p>Discover collectible worlds</p>
+      </div>
+      <div class="home-products">
+        <div class="category-card">
+          <div class="image-wrapper">
+            <div class="img-placeholder">分类图预留位</div>
+            <img
+              src="assets/images/banners/BannersHome1.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Designer Toys</h3>
+          <p>Art figures and characters</p>
+          <a href="shop.html?category=Designer%20Toys" class="category-btn"
+            >去逛逛 →</a
+          >
+        </div>
+        <div class="category-card">
+          <div class="image-wrapper">
+            <div class="img-placeholder">分类图预留位</div>
+            <img
+              src="assets/images/banners/BannersShop1.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Blind Box</h3>
+          <p>Mystery collectibles</p>
+          <a href="shop.html?category=Blind%20Box" class="category-btn"
+            >去逛逛 →</a
+          >
+        </div>
+        <div class="category-card">
+          <div class="image-wrapper">
+            <div class="img-placeholder">分类图预留位</div>
+            <img
+              src="assets/images/banners/BannersAbout1.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Limited Edition</h3>
+          <p>Exclusive drops</p>
+          <a href="shop.html?category=Limited%20Edition" class="category-btn"
+            >去逛逛 →</a
+          >
+        </div>
+        <div class="category-card">
+          <div class="image-wrapper">
+            <div class="img-placeholder">分类图预留位</div>
+            <img
+              src="assets/images/banners/BannersArtists1.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Mini Figures</h3>
+          <p>Creative accessories</p>
+          <a href="shop.html?category=Mini%20Figures" class="category-btn"
+            >去逛逛 →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="products">
+      <div class="section-title">
+        <h2>Fresh Drops</h2>
+        <p>Latest collectible releases</p>
+      </div>
+      <div class="home-products" id="newProducts"></div>
+    </section>
+
+    <section class="products">
+      <div class="section-title">
+        <h2>Collector Favorites</h2>
+        <p>Most loved collectibles</p>
+      </div>
+      <div class="home-products" id="bestProducts"></div>
+    </section>
+
+    <section class="brand-story" style="padding: 80px; background: #f7f7f7">
+      <div class="section-title">
+        <h2>更多关于 NOVU TOYS</h2>
+        <p>不只是玩具，更是承载梦想的艺术品</p>
+      </div>
+      <div
+        class="story-content"
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 50px;
+          max-width: 1200px;
+          margin: 0 auto;
+        "
+      >
+        <div class="story-image">
+          <div class="image-wrapper" style="height: 400px; border-radius: 20px">
+            <div class="img-placeholder">工作室照片预留位</div>
+            <img
+              src="assets/images/banners/BannersAbout1.png"
+              onerror="this.style.display = 'none'"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+        </div>
+        <div class="story-text">
+          <h2>匠心与艺术的融合</h2>
+          <p style="margin-top: 20px">
+            NOVU TOYS
+            携手全球顶尖艺术家，将每一份想象力注入实体。在复杂的雕塑与色彩中，传递纯粹的热爱与情感连接。
+          </p>
+          <p style="margin-top: 20px">
+            从手绘草图到最终量产，我们严格把控每一道工序，只为给收藏家们带来最完美的作品。
+          </p>
+          <a
+            href="about.html"
+            style="
+              display: inline-block;
+              margin-top: 30px;
+              padding: 15px 40px;
+              background: #111;
+              color: white;
+              border-radius: 30px;
+            "
+            >了解更多</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" style="padding: 80px">
+      <div class="section-title">
+        <h2>全球收藏家之声</h2>
+        <p>来自世界各地玩家的真实好评</p>
+      </div>
+      <div
+        class="testimonial-grid"
+        id="testimonialGrid"
+        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px"
+      ></div>
+    </section>
+
+    <!-- ================= ARTISTS ================= -->
+    <section class="artists">
+      <div class="section-title">
+        <h2>Meet The Creators</h2>
+        <p>Artists behind the characters</p>
+      </div>
+
+      <div
+        class="artist-grid"
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+          padding: 0 80px;
+        "
+      >
+        <div
+          class="artist-card"
+          onclick="window.location.href = 'artists.html'"
+          style="
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding-bottom: 20px;
+            cursor: pointer;
+          "
+        >
+          <div class="image-wrapper" style="height: 250px">
+            <div class="img-placeholder">Luna Chen 照片预留位</div>
+            <img
+              src="assets/images/artists/LunaChen.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Luna Chen</h3>
+          <p>Character Designer</p>
+          <button
+            style="
+              padding: 10px 25px;
+              background: #111;
+              color: white;
+              border-radius: 30px;
+              margin-top: 10px;
+            "
+          >
+            查看TA的作品
+          </button>
+        </div>
+
+        <div
+          class="artist-card"
+          onclick="window.location.href = 'artists.html'"
+          style="
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding-bottom: 20px;
+            cursor: pointer;
+          "
+        >
+          <div class="image-wrapper" style="height: 250px">
+            <div class="img-placeholder">Ken Walker 照片预留位</div>
+            <img
+              src="assets/images/artists/KenaWalker.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Ken Walker</h3>
+          <p>Toy Sculptor</p>
+          <button
+            style="
+              padding: 10px 25px;
+              background: #111;
+              color: white;
+              border-radius: 30px;
+              margin-top: 10px;
+            "
+          >
+            查看TA的作品
+          </button>
+        </div>
+
+        <div
+          class="artist-card"
+          onclick="window.location.href = 'artists.html'"
+          style="
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding-bottom: 20px;
+            cursor: pointer;
+          "
+        >
+          <div class="image-wrapper" style="height: 250px">
+            <div class="img-placeholder">Mika Studio 照片预留位</div>
+            <img
+              src="assets/images/artists/MikaStudio.png"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+          <h3>Mika Studio</h3>
+          <p>Creative Director</p>
+          <button
+            style="
+              padding: 10px 25px;
+              background: #111;
+              color: white;
+              border-radius: 30px;
+              margin-top: 10px;
+            "
+          >
+            查看TA的作品
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="newsletter"
+      style="padding: 80px; text-align: center; background: #111; color: white"
+    >
+      <h2>获取最新独家发售讯息</h2>
+      <p>订阅我们的邮件，抢先一步收藏心头好。</p>
+      <div class="subscribe" style="margin-top: 30px">
+        <input
+          type="email"
+          placeholder="输入您的邮箱"
+          style="
+            padding: 15px;
+            width: 300px;
+            border-radius: 30px;
+            border: none;
+            margin-right: 10px;
+          "
+        />
+        <button
+          style="
+            padding: 15px 30px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+          "
+        >
+          订阅
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NOVU TOYS</div>
+      <p>© 2026 NOVU TOYS. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/cart-core.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>

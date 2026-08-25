@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVU TOYS | Cart</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">NOVU<span>TOYS</span></div>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="artists.html">Artists</a>
+      </nav>
+      <div class="header-icons">
+        <a href="cart.html">购物车<span class="cart-badge">0</span></a>
+      </div>
+    </header>
+
+    <section class="cart-section">
+      <h1>购物车</h1>
+      <div class="cart-layout">
+        <div id="cartItems" class="cart-items"></div>
+
+        <!-- 优惠券及订单摘要 -->
+        <div class="cart-summary">
+          <h2>订单摘要</h2>
+
+          <div class="coupon-box" style="margin-bottom: 20px">
+            <input
+              type="text"
+              id="couponInput"
+              placeholder="输入优惠码 (如 NOVU10)"
+              style="
+                width: 70%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+              "
+            />
+            <button
+              id="applyCouponBtn"
+              style="
+                width: 25%;
+                padding: 10px;
+                background: #111;
+                color: white;
+                border: none;
+                border-radius: 5px;
+              "
+            >
+              应用
+            </button>
+            <p
+              id="couponMsg"
+              style="font-size: 12px; color: #888; margin-top: 5px"
+            >
+              提示：新用户可享 NOVU10 优惠
+            </p>
+          </div>
+
+          <div class="summary-row">
+            <span>小计</span><span id="subtotal">$0</span>
+          </div>
+          <div class="summary-row"><span>运费</span><span>免运费</span></div>
+          <div
+            class="summary-row"
+            id="discountRow"
+            style="display: none; color: #e74c3c"
+          >
+            <span>折扣</span>
+            <span id="discountAmount">-$0</span>
+          </div>
+
+          <hr />
+          <div class="summary-total">
+            <span>总计</span><span id="total">$0</span>
+          </div>
+          <button id="checkoutButton">去结算</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NOVU TOYS</div>
+      <p>© 2026 NOVU TOYS</p>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/cart-core.js"></script>
+    <script src="assets/js/cart.js"></script>
+  </body>
+</html>

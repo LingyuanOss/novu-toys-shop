@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVU TOYS | Shop</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">NOVU<span>TOYS</span></div>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="artists.html">Artists</a>
+      </nav>
+      <div class="header-icons">
+        <a href="cart.html">购物车<span class="cart-badge">0</span></a>
+      </div>
+    </header>
+
+    <!-- ================= SHOP BANNER CAROUSEL (真实图片替换) ================= -->
+    <section class="shop-banner-carousel" id="shopCarousel">
+      <div
+        class="slide active"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersShop1.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <h1>探索我们的收藏系列</h1>
+        <p>发现设计师玩具、盲盒和限量版作品。</p>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersShop2.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <h1>热门藏品大促</h1>
+        <p>全场满 $100 包邮，精选好物等你来选！</p>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url(&quot;assets/images/banners/BannersShop3.png&quot;);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <h1>新品首发专区</h1>
+        <p>最前沿的设计师玩具，抢先收藏。</p>
+      </div>
+
+      <button class="carousel-arrow prev" onclick="changeSlideShop(-1)">
+        &#10094;
+      </button>
+      <button class="carousel-arrow next" onclick="changeSlideShop(1)">
+        &#10095;
+      </button>
+
+      <div class="carousel-dots">
+        <span class="dot active" onclick="setSlideShop(0)"></span>
+        <span class="dot" onclick="setSlideShop(1)"></span>
+        <span class="dot" onclick="setSlideShop(2)"></span>
+      </div>
+    </section>
+
+    <div id="featuredArea" style="padding: 40px 80px"></div>
+
+    <section class="shop-controls">
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="搜索商品名或艺术家..."
+        />
+      </div>
+      <div class="filter-box">
+        <select id="tagFilter">
+          <option value="all">全部标签</option>
+          <option value="New Arrival">新到货</option>
+          <option value="Limited">限量版</option>
+          <option value="Popular">热门</option>
+          <option value="Trending">流行趋势</option>
+          <option value="Hot">热卖</option>
+        </select>
+        <select id="categoryFilter">
+          <option value="all">全部分类</option>
+          <option value="Designer Toys">Designer Toys</option>
+          <option value="Blind Box">Blind Box</option>
+          <option value="Limited Edition">Limited Edition</option>
+          <option value="Mini Figures">Mini Figures</option>
+          <option value="Street Culture">Street Culture</option>
+        </select>
+        <select id="priceSort">
+          <option value="default">默认排序</option>
+          <option value="low">价格从低到高</option>
+          <option value="high">价格从高到低</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="shop-products">
+      <div class="product-header">
+        <h2>全部收藏品</h2>
+        <p id="productCount"></p>
+      </div>
+
+      <div class="product-container"></div>
+
+      <div
+        id="loadMoreArea"
+        style="text-align: center; padding: 40px 0; display: none"
+      >
+        <button
+          id="loadMoreBtn"
+          style="
+            padding: 15px 50px;
+            background: #111;
+            color: white;
+            border-radius: 30px;
+            font-size: 16px;
+          "
+        >
+          加载更多商品
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NOVU TOYS</div>
+      <p>© 2026 NOVU TOYS</p>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/cart-core.js"></script>
+    <script src="assets/js/shop.js"></script>
+  </body>
+</html>

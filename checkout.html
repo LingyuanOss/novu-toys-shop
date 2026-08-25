@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVU TOYS | Checkout</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">NOVU<span>TOYS</span></div>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">购物车</a>
+      </nav>
+    </header>
+
+    <section class="checkout-section">
+      <h1>结算</h1>
+      <div class="checkout-layout">
+        <div class="customer-form">
+          <h2>收货信息</h2>
+          <input type="text" id="name" placeholder="姓名" />
+          <input type="email" id="email" placeholder="电子邮箱" />
+          <input type="text" id="address" placeholder="详细地址" />
+          <input type="text" id="city" placeholder="城市" />
+          <input type="text" id="country" placeholder="国家" />
+        </div>
+
+        <div class="checkout-summary">
+          <h2>您的订单</h2>
+          <div id="checkoutItems"></div>
+          <hr />
+          <div class="summary-total">
+            <span>总计</span><span id="checkoutTotal">$0</span>
+          </div>
+
+          <!-- 新增：支付方式选择 -->
+          <h3 style="margin-top: 20px; font-size: 18px">选择支付方式</h3>
+          <div
+            class="payment-methods"
+            style="display: flex; gap: 10px; margin-top: 15px"
+          >
+            <label
+              style="
+                border: 2px solid #ddd;
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                flex: 1;
+                text-align: center;
+              "
+            >
+              <input
+                type="radio"
+                name="payment"
+                value="paypal"
+                checked
+                style="margin-right: 5px"
+              />
+              <span style="color: #003087; font-weight: bold">PayPal</span>
+            </label>
+            <label
+              style="
+                border: 2px solid #ddd;
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                flex: 1;
+                text-align: center;
+              "
+            >
+              <input
+                type="radio"
+                name="payment"
+                value="stripe"
+                style="margin-right: 5px"
+              />
+              <span style="color: #635bff; font-weight: bold">Stripe</span>
+            </label>
+            <label
+              style="
+                border: 2px solid #ddd;
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
+                flex: 1;
+                text-align: center;
+              "
+            >
+              <input
+                type="radio"
+                name="payment"
+                value="alipay"
+                style="margin-right: 5px"
+              />
+              <span style="color: #1677ff; font-weight: bold">支付宝</span>
+            </label>
+          </div>
+
+          <button id="paymentButton">立即支付</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NOVU TOYS</div>
+      <p>© 2026 NOVU TOYS</p>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/cart-core.js"></script>
+    <script src="assets/js/checkout.js"></script>
+  </body>
+</html>
